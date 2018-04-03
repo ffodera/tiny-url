@@ -20,7 +20,6 @@ base_62_values = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
 mapping = range(28)
 mapping.reverse()
 
-
 """
 Create the database table and handle if it already exists
 """
@@ -56,6 +55,7 @@ def convertToBase62(num):
         result = base_62_values[int(remainder)] + result
     return result
 
+
 """
 Convert from a starting base back to base 10
 """
@@ -65,6 +65,7 @@ def convertToBase10(num, initialBase=62):
     for i in range(limit):
         result = initialBase * result + base_62_values.find(num[i])
     return result
+
 
 """
 Encode the bits by shuffling them to produce pseudo random links
@@ -78,6 +79,7 @@ def encode(n):
             result |= b2
     return result
 
+
 """
 Decode the bits by unshuffling them using the same mapping
 """
@@ -89,6 +91,7 @@ def decode(n):
         if n & b2:
             result |= b1
     return result
+
 
 """
 The main link page and url shortner API
@@ -108,16 +111,16 @@ def main_page():
                 [base64.urlsafe_b64encode(url)]
             )
             encoded_string = convertToBase62(encode(res.lastrowid))
-        return render_template('home.html', tiny_url=hostname + encoded_string)
+        return render_template('home.html', short_url=hostname + encoded_string)
     return render_template('home.html')
 
 
 """
 The redirect API
 """
-@app.route('/<tiny_url>')
-def redirect_link(tiny_url):
-    decoded = decode(convertToBase10(tiny_url))
+@app.route('/<short_url>')
+def redirect_link(short_url):
+    decoded = decode(convertToBase10(short_url))
     url = hostname  # fallback if no URL is found
     with sqlite3.connect('url_links.db') as conn:
         cursor = conn.cursor()

@@ -2,6 +2,11 @@
 This repository is an example of using python to create a web application that shortens URLs and redirects them when 
 accessed.
 
+## Requirements
+- Flask - 0.12.2
+- sqlite3 - 3.20.1
+- Python - 2.7.14
+
 ## Running the server
 This code was tested and built on Fedora 27, kernel 4.14.11. The instructions are based on a Fedora based Linux environment 
 and may require slight modifications in other environments.
