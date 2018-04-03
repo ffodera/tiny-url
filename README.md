@@ -6,10 +6,11 @@ accessed.
 - Flask - 0.12.2
 - sqlite3 - 3.20.1
 - Python - 2.7.14
+- Bootstrap - 3.3.7
 
 ## Running the server
-This code was tested and built on Fedora 27, kernel 4.14.11. The instructions are based on a Fedora based Linux environment 
-and may require slight modifications in other environments.
+This code was tested and built on Fedora 27, kernel 4.14.11 that contains an internet connection. The instructions are 
+based on a Fedora based Linux environment and may require slight modifications in other environments.
 
 ### Steps:
 1. Clone the repository:
