@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>URL Shortener Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: dimgrey;
+            color: white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>URL Shortener Example</h1>
+        <p>This is an example application that generates tiny URLs and redirects them.</p>
+    </div>
+    {% if not tiny_url %}
+    <form method="post" action="" class="form-horizontal">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="url">Enter a URL:</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="url" placeholder="Enter url" name="url">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+    {% else %}
+    <form>
+        <div>
+            Your shortened url is: <a href="{{tiny_url}}"> {{tiny_url}}</a>
+        </div>
+        <button type="submit" formaction="/" class="btn btn-default">Enter Another URL</button>
+    </form>
+
+    {% endif %}
+</div>
+</body>
+</html>
+<footer>
+    <div layout="row" class="footer">
+        <span>&copy; 2018 Frank Fodera. All rights reserved.</span>
+    </div>
+</footer>
